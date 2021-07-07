@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录页面</title>
+    <link href="static/css/login.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="login_box">
+        <div class="login_l_img"><img src="static/images/login-img.png"></div>
+        <div class="login">
+            <div class="login_logo">
+                <a href="#"><img src="static/images/login_logo.png"></a>
+            </div>
+            <div class="login_name">
+                <p>后台管理系统</p>
+            </div>
+            <form method="post">
+                <input name="username" type="text" value="用户名" id="username">
+                <span id="password_text" onclick="" style="display: block;">密码</span>
+                <input name="password" type="password" id="password" style="display: none;">
+                <input value="登录" style="width:100%;" type="submit">
+            </form>
+        </div>
+        <div class="copyright">某某有限公司 版权所有©2016-2018 技术支持电话：000-00000000</div>
+    </div>
+    <script src="static/js/public/require.js" data-main="static/js/public/require-backend.js"></script>
+    <script>
+        require(['require-backend'], function() {
+            require(['jquery'], function($) {
+                $(function() {
+                    $('#username').on('focus', function() {
+                        $(this).val('');
+                    });
+                    $('#username').on('blur', function() {
+                        if ($(this).val() == '') {
+                            $(this).val('用户名');
+                        }
+                    });
+
+                    $("#password_text").on('click', function() {
+                        $(this).hide();
+                        $('#password').show();
+                        document.getElementById('password').focus();
+                    });
+
+                    $('#password').on('blur', function() {
+                        if ($(this).val() == '') {
+                            $(this).hide();
+                            $('#password_text').show();
+                        };
+                    });
+                })
+            });
+        });
+    </script>
+</body>
+
+</html>
