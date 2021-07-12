@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>登录页面</title>
     <link href="static/css/login.css" rel="stylesheet" type="text/css">
+    <link href="static/css/admin.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -23,7 +24,7 @@
                 <input name="username" type="text" value="用户名" id="username">
                 <span id="password_text" onclick="" style="display: block;">密码</span>
                 <input name="password" type="password" id="password" style="display: none;">
-                <input value="登录" style="width:100%;" type="submit">
+                <input value="登录" style="width:100%;" type="button" id="login">
             </form>
         </div>
         <div class="copyright">某某有限公司 版权所有©2016-2018 技术支持电话：000-00000000</div>
@@ -31,7 +32,7 @@
     <script src="static/js/public/require.js" data-main="static/js/public/require-backend.js"></script>
     <script>
         require(['require-backend'], function() {
-            require(['jquery'], function($) {
+            require(['jquery', 'admin'], function($) {
                 $(function() {
                     $('#username').on('focus', function() {
                         $(this).val('');
@@ -53,6 +54,21 @@
                             $(this).hide();
                             $('#password_text').show();
                         };
+                    });
+
+                    $("#login").on('click', function() {
+                        let username = $('#username').val();
+                        let password = $('#password').val();
+                        if (!username || !password) {
+                            window.toastr.error('账号或密码错误');
+                            return;
+                        }
+
+                        window.toastr.success('登录成功', function() {
+                            setTimeout(function() {
+                                window.location = './admin.html';
+                            }, 3000);
+                        });
                     });
                 })
             });
