@@ -1,1 +1,24 @@
+@import url("./public/reset.css");
 @import url("../js/libs/toastr/toastr.min.css");
+html {
+    font-size: 62.5%;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.web-header {
+    height: 5rem;
+}
+
+.web-header .web-header-left {
+    text-align: center;
+    line-height: 5rem;
+    background-color: #222d32;
+    box-shadow: 0px 1px 1px rgb(0 0 0 / 5%);
+    color: #fff;
+    font-size: 2rem;
+}
+
+.web-header .web-header-left a,
+.web-header .web-header-left a:hover {
+    color: #fff;
+}
